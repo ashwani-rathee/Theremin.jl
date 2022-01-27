@@ -2,13 +2,13 @@
 
 ## Theremin.jl
 ![](assets/example.png)
+
 Audio Processing in Julia
 
 #### Goals:
 - Provide a simple, intuitive, and very efficient API for audio processing in Julia
 - Provides functionalities and efficiencies at the levels of Librosa and Essentia that are quite popular in the audio processing community
 - Provides tools for music information retrieval
-- 
 
 #### Features:
  - `load_aud` : load audio files in atleast OGG,FLAC, WAV 
@@ -26,6 +26,7 @@ Lot more to come...
 #### References:
 - [DSP.jl](https://github.com/JuliaDSP/DSP.jl) -> https://github.com/JuliaDSP/DSP.jl
 - https://github.com/JuliaDSP/MFCC.jl
+- https://musicinformationretrieval.com/
 
 
 
