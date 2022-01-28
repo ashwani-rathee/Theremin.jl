@@ -4,9 +4,7 @@ using PyCall
 using Theremin
 using Test
 
-tests = [
-    "audio.jl",
-]
+tests = ["audio.jl"]
 
 for t in tests
     @testset "$t" begin
