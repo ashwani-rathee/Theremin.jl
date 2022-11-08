@@ -244,7 +244,7 @@ y2 = trim(y, 44100, 0.005) # time more than y length
 ```
 """
 function trim(y, sr, duration)
-    if duration > 0.0 && duration*sr < getnframes(y)
+    if duration > 0.0 && duration * sr < getnframes(y)
         start = 1
         end1 = Int64.(floor(duration * sr))
         y = y[start:end1, :]
@@ -275,7 +275,7 @@ y = trim(y,sr, 0.0015, 0.002)
 ```
 """
 function trim(y, sr, t1, t2)
-    if t2 > 0.0 && t2*sr < getnframes(y) && t1 > 0.0 && t1 < t2 
+    if t2 > 0.0 && t2 * sr < getnframes(y) && t1 > 0.0 && t1 < t2
         start = Int64.(floor(t1 * sr))
         end1 = Int64.(floor(t2 * sr))
         y = y[start:end1, :]
@@ -306,16 +306,16 @@ silend = addsilence(y, sr, 0.003, "back") # adds to end of audio
 silfront =  addsilence(y, sr,0.003, "front") # adds to front of audio
 ```
 """
-function addsilence(y, sr, duration, loc="back")
-    if loc == "back" && duration*sr > getnframes(y) && nchannels(y) == 1
-        left = duration*sr - getnframes(y)
-        frontadd = reshape(zeros(Float32, Int64.(floor(left))),:,1)
+function addsilence(y, sr, duration, loc = "back")
+    if loc == "back" && duration * sr > getnframes(y) && nchannels(y) == 1
+        left = duration * sr - getnframes(y)
+        frontadd = reshape(zeros(Float32, Int64.(floor(left))), :, 1)
         y = vcat(y, frontadd)
-    elseif loc == "front" && duration*sr > getnframes(y) && nchannels(y) == 1
-        left = duration*sr - getnframes(y)
-        frontadd = reshape(zeros(Float32, Int64.(floor(left))),:,1)
+    elseif loc == "front" && duration * sr > getnframes(y) && nchannels(y) == 1
+        left = duration * sr - getnframes(y)
+        frontadd = reshape(zeros(Float32, Int64.(floor(left))), :, 1)
         y = vcat(frontadd, y)
-    else 
+    else
         return y
     end
 end
@@ -342,16 +342,16 @@ noisefront =  addnoise(y, sr,0.003, "front") # adds to front of audio
 
 ```
 """
-function addnoise(y, sr, duration, loc="back")
-    if loc == "back" && duration*sr > getnframes(y) && nchannels(y) == 1
-        left = duration*sr - getnframes(y)
-        frontadd = rand(Float32, (Int64.(floor(left)),1))
+function addnoise(y, sr, duration, loc = "back")
+    if loc == "back" && duration * sr > getnframes(y) && nchannels(y) == 1
+        left = duration * sr - getnframes(y)
+        frontadd = rand(Float32, (Int64.(floor(left)), 1))
         y = vcat(y, frontadd)
-    elseif loc == "front" && duration*sr > getnframes(y) && nchannels(y) == 1
-        left = duration*sr - getnframes(y)
-        frontadd = rand(Float32, (Int64.(floor(left)),1))
+    elseif loc == "front" && duration * sr > getnframes(y) && nchannels(y) == 1
+        left = duration * sr - getnframes(y)
+        frontadd = rand(Float32, (Int64.(floor(left)), 1))
         y = vcat(frontadd, y)
-    else 
+    else
         return y
     end
 end
